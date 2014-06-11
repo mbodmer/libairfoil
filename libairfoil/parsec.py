@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 '''
 #          Copyright Marc Bodmer 2013.
 # Distributed under the Boost Software License, Version 1.0.
