@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "libairfoil"
+version = "0.1.0"
+description = "Parametric Airfoils and Wings Library"
+authors = ["Marc Bodmer <marc.bodmer@email.ch>"]
+license = "BSL-1.0"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+numpy = "^1.19.2"
+matplotlib = "^3.3.2"
+
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.scripts]
+parsec = "examples.parsec:main"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
