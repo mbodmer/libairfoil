@@ -90,14 +90,14 @@ class Airfoil(object):
     def Z_up(self, X):
         '''Returns Z(X) on upper surface, calculates PARSEC polynomial'''
         a = self._coeff.a_up()
-        print a
+        print(a)
         return a[0]*X**0.5 + a[1]*X**1.5 + a[2]*X**2.5 + a[3]*X**3.5 + a[4]*X**4.5 + a[5]*X**5.5
         
     
     def Z_lo(self, X):
         '''Returns Z(X) on lower surface, calculates PARSEC polynomial'''
         a = self._coeff.a_lo()
-        print a
+        print(a)
         return a[0]*X**0.5 + a[1]*X**1.5 + a[2]*X**2.5 + a[3]*X**3.5 + a[4]*X**4.5 + a[5]*X**5.5
 
 
