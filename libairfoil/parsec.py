@@ -58,14 +58,14 @@ class Coefficients(object):
     
     def _calc_a_up(self, parsec_params):
         Amat = self._prepare_linsys_Amat(parsec_params.X_up)
-        Bvec = numpy.array([parsec_params.Z_te, parsec_params.Z_up,
+        Bvec = numpy.array([parsec_params.Z_te + parsec_params.dZ_te/2, parsec_params.Z_up,
                             math.tan(parsec_params.alpha_te - parsec_params.beta_te/2),
                             0.0, parsec_params.Z_XX_up, math.sqrt(2*parsec_params.r_le)]) 
         return numpy.linalg.solve(Amat, Bvec)
     
     def _calc_a_lo(self, parsec_params):
         Amat = self._prepare_linsys_Amat(parsec_params.X_lo)
-        Bvec = numpy.array([parsec_params.Z_te, parsec_params.Z_lo,
+        Bvec = numpy.array([parsec_params.Z_te - parsec_params.dZ_te/2, parsec_params.Z_lo,
                             math.tan(parsec_params.alpha_te + parsec_params.beta_te/2),
                             0.0, parsec_params.Z_XX_lo, -math.sqrt(2*parsec_params.r_le)])
         return numpy.linalg.solve(Amat, Bvec)
