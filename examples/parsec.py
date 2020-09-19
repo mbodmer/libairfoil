@@ -9,7 +9,8 @@ import libairfoil.parsec
 
 def main():
        
-    jfoil_string = 'Parsec-11 [0,01:0,4:0,075:0,4:-0,075:-0,1:0,1:0:0:0:20]'
+    jfoil_string = 'Parsec-11 [0.01:0.4:0.075:-0.1:0.4:-0.075:0.1:0:0:0:20]'
+    # jfoil_string = 'Parsec-11 [0.06:0.3:0.118:-0.9:0.3:-0.118:0.9:0:0:0:20]'
 
     params = libairfoil.parsec.Parameters()
     params.load_from_javafoil_parsec11(jfoil_string)
