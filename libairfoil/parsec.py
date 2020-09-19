@@ -38,19 +38,50 @@ class Parameters(object):
         self.beta_te    = 0.0   # Trailing edge wedge angle
         self.P_mix      = 1.0   # Blending parameter
     
+
+    def load_from_javafoil_parsec11(self, parsec11_string):
+        '''
+        parses the JavaFoil parameter PARSEC-11 string into our PARSEC param object
+        '''
+        # first "clean" string so it can be used with numpy.fromstring
+        parsec11_string = parsec11_string.replace('Parsec-11', '')
+        parsec11_string = parsec11_string.replace('[', '')
+        parsec11_string = parsec11_string.replace(']', '')
+        parsec11_string = parsec11_string.replace(',', '.')
+        parsec11_string = parsec11_string.strip()
+        
+        jfoil = numpy.fromstring(parsec11_string, dtype=float, sep=':')
+        
+        self.r_le       = jfoil[0]
+        self.X_up       = jfoil[1]
+        self.Z_up       = jfoil[2]
+        self.X_lo       = jfoil[3]
+        self.Z_lo       = jfoil[4]
+        self.Z_XX_up    = jfoil[5]
+        self.Z_XX_lo    = jfoil[6]
+        self.Z_te       = jfoil[7]
+        self.dZ_te      = jfoil[8]
+        self.alpha_te   = math.radians(jfoil[9])
+        self.beta_te    = math.radians(jfoil[10])
+        self.P_mix      = 1.0
+
+    
     def __str__(self):
         rep = f'''
+        PARSEC-11 airfoil parameters:
+        -------------------------------------------------------------
         Leading edge radius [r_le]:               {self.r_le}
         Upper crest location X coordinate [X_up]: {self.X_up}
         Upper crest location Z coordinate [Z_up]: {self.Z_up}
-        Upper crest location curvature [Z_XX_up]: {self.Z_XX_up}
         Lower crest location X coordinate [X_lo]: {self.X_lo}
         Lower crest location Z coordinate [Z_lo]: {self.Z_lo}
+        Upper crest location curvature [Z_XX_up]: {self.Z_XX_up}
         Lower crest location curvature [Z_XX_lo]: {self.Z_XX_lo}
         Trailing edge Z coordinate [Z_te]:        {self.Z_te}
         Trailing edge thickness [dZ_te]:          {self.dZ_te}
         Trailing edge direction angle [alpha_te]: {self.alpha_te}
         Trailing edge wedge angle [beta_te]:      {self.beta_te}
+        -------------------------------------------------------------
         Blending parameter [P_mix]:               {self.P_mix}
         '''
         return rep

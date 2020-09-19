@@ -3,35 +3,27 @@ import pytest
 import numpy, math
 import libairfoil.parsec as parsec
 
+def debugprint(msg):
+    print(msg)
 
-# def parse_javafoil_parsec11_params(string):
-#     '''parses the JavaFoil parameter PARSEC-11 string into our PARSEC param object'''
-#     jfoil = numpy.fromstring(string.replace(',', '.'), dtype=float, sep=':')
-       
-#     print(jfoil)
-#     params = parsec.Parameters()
-#     params.r_le       = jfoil[0]
+def test_params_from_jfoil_string():
+    jfoil_string = 'Parsec-11 [1:2:3:4:5:6:7:8:9:10:11]'
+    params = parsec.Parameters()
+    params.load_from_javafoil_parsec11(jfoil_string)
+    debugprint(params)
 
-#     params.X_lo       = jfoil[1]
-#     params.Z_lo       = jfoil[2]
-#     params.Z_XX_lo    = jfoil[3]
-# What is this strings sequence ???
-#     params.X_up       = jfoil[6]
-#     params.Z_up       = jfoil[5]
-#     params.Z_XX_up    = jfoil[4]
+    assert params.r_le == 1
+    assert params.X_up == 2
+    assert params.Z_up == 3
+    assert params.X_lo == 4
+    assert params.Z_lo == 5
+    assert params.Z_XX_up == 6
+    assert params.Z_XX_lo == 7
+    assert params.Z_te == 8
+    assert params.dZ_te == 9
+    assert params.alpha_te == math.radians(10)
+    assert params.beta_te == math.radians(11)
 
-#     params.Z_te       = 0.0
-#     params.dZ_te      = 0.0
-#     params.alpha_te   = math.radians(0.0)
-#     params.beta_te    = math.radians(20.0)
-
-#     return params
-
-def test_jfoil_sample():
-    # parse jfoil string into our parameters
-    # params = parse_javafoil_parsec11_params('0,01:0,4:0,075:-0,1: 0,075:0,075:-0,1:0:-0: 0:20')
-
-    # todo: use code above after string parsing
     params = parsec.Parameters()
     params.r_le       = 0.01
     params.X_up       = 0.4
