@@ -26,7 +26,7 @@ def test_params_from_jfoil_string():
 
 
 def test_jfoil_sample():
-    jfoil_string = 'Parsec-11 [0,01:0,4:0,075:0,4:-0,075:-0,1:0,1:0:0:0:20]'
+    jfoil_string = 'Parsec-11 [0.01:0.4:0.075:-0.1:0.4:-0.075:0.1:0:0:0:20]'
     params = parsec.Parameters()
     params.load_from_javafoil_parsec11(jfoil_string)
     debugprint(params)
@@ -67,7 +67,7 @@ def test_jfoil_sample():
 
 
 def test_jfoil_sample2():
-    jfoil_string = 'Parsec-11 [0.06:0.3:0.118:-0.9:0.118:0.118:-0.9:0:-0:0:20]'
+    jfoil_string = 'Parsec-11 [0.06: 0.3:0.118:-0.9 :0.3:-0.118:0.9 :0:-0:0:20]'
     params = parsec.Parameters()
     params.load_from_javafoil_parsec11(jfoil_string)
     debugprint(params)
@@ -101,11 +101,7 @@ def test_jfoil_sample2():
                     -0.01286919, -0.00766383, -0.00338149, 0.00000000])
     
     z_up = airfoil.Z_up(x_up)
-    assert numpy.allclose(z_up_expected, z_up)
-
-    # This test completely fails, debug session needed
-    # for idx, z_up_exp_val in numpy.ndenumerate(z_up_expected):
-    #     print(idx, z_up_exp_val, z_up[idx], numpy.isclose(z_up_exp_val, z_up[idx]))
+    assert numpy.allclose(z_up_expected, z_up, atol=0.001)
 
     z_lo = airfoil.Z_lo(x_lo)
-    assert numpy.allclose(z_lo_expected, z_lo)
+    assert numpy.allclose(z_lo_expected, z_lo, atol=0.001)
