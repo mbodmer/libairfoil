@@ -15,9 +15,9 @@ def test_params_from_jfoil_string():
     assert params.r_le == 1
     assert params.X_up == 2
     assert params.Z_up == 3
-    assert params.X_lo == 4
-    assert params.Z_lo == 5
-    assert params.Z_XX_up == 6
+    assert params.Z_XX_up == 4
+    assert params.X_lo == 5
+    assert params.Z_lo == 6
     assert params.Z_XX_lo == 7
     assert params.Z_te == 8
     assert params.dZ_te == 9
