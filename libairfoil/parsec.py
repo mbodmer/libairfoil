@@ -14,6 +14,9 @@ References:
 
 - Geometric Parameterisation and Aerodynamic Shape Optimisation, by Feng Zhu
   http://etheses.whiterose.ac.uk/6704/1/Feng_Zhu_Thesis_final.pdf
+
+- An airfoil shape optimization technique coupling PARSEC parameterization and evolutionary algorithm, Veccia, Daniele, D'Amato
+  https://www.iris.unina.it/retrieve/handle/11588/581560/9503/1-s2.0-S1270963813002046-full_article.pdf
 '''
 
 import numpy
