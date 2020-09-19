@@ -37,6 +37,23 @@ class Parameters(object):
         self.alpha_te   = 0.0   # Trailing edge direction angle
         self.beta_te    = 0.0   # Trailing edge wedge angle
         self.P_mix      = 1.0   # Blending parameter
+    
+    def __str__(self):
+        rep = f'''
+        Leading edge radius [r_le]:               {self.r_le}
+        Upper crest location X coordinate [X_up]: {self.X_up}
+        Upper crest location Z coordinate [Z_up]: {self.Z_up}
+        Upper crest location curvature [Z_XX_up]: {self.Z_XX_up}
+        Lower crest location X coordinate [X_lo]: {self.X_lo}
+        Lower crest location Z coordinate [Z_lo]: {self.Z_lo}
+        Lower crest location curvature [Z_XX_lo]: {self.Z_XX_lo}
+        Trailing edge Z coordinate [Z_te]:        {self.Z_te}
+        Trailing edge thickness [dZ_te]:          {self.dZ_te}
+        Trailing edge direction angle [alpha_te]: {self.alpha_te}
+        Trailing edge wedge angle [beta_te]:      {self.beta_te}
+        Blending parameter [P_mix]:               {self.P_mix}
+        '''
+        return rep
 
 
 class Coefficients(object):
@@ -88,12 +105,12 @@ class Airfoil(object):
     def Z_up(self, X):
         '''Returns Z(X) on upper surface, calculates PARSEC polynomial'''
         a = self._coeff.a_up()
-        print(a)
+        # print(a)
         return a[0]*X**0.5 + a[1]*X**1.5 + a[2]*X**2.5 + a[3]*X**3.5 + a[4]*X**4.5 + a[5]*X**5.5
         
     
     def Z_lo(self, X):
         '''Returns Z(X) on lower surface, calculates PARSEC polynomial'''
         a = self._coeff.a_lo()
-        print(a)
+        # print(a)
         return a[0]*X**0.5 + a[1]*X**1.5 + a[2]*X**2.5 + a[3]*X**3.5 + a[4]*X**4.5 + a[5]*X**5.5
