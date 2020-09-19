@@ -11,6 +11,9 @@ References:
 
 - Parametric Airfoils and Wings, by Helmut Sobieczky,
   http://www.sobieczky.at/aero/literature/H141.pdf
+
+- Geometric Parameterisation and Aerodynamic Shape Optimisation, by Feng Zhu
+  http://etheses.whiterose.ac.uk/6704/1/Feng_Zhu_Thesis_final.pdf
 '''
 
 import numpy
