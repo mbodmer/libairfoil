@@ -10,13 +10,7 @@ Python library for parametric representation of airfoils according to PARSEC (PA
 References:
 
 - Parametric Airfoils and Wings, by Helmut Sobieczky,
-  http://www.as.dlr.de/hs/h-pdf/H141.pdf
-  
-- Representation Method Effects on Vibrational Genetic Algorithm in 2D Airfoil Design, Y.V.Pehlivanoglu
-  http://www.hho.edu.tr/HutenDergi/2009TEMMUZ/5_PEHLIVANOGLU.pdf
-
-- Aerodynamic Shape Optimization using Computer Mapping of Natural Evolution Process, Selvakumar/Mukesh
-  http://sumo.intec.ugent.be/system/files/private/Selva_1_china.pdf
+  http://www.sobieczky.at/aero/literature/H141.pdf
 '''
 
 import numpy
